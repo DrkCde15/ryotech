@@ -1,6 +1,4 @@
-import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/Button";
 import { Project } from "@/types";
 
 interface ProjectCardProps {
@@ -74,22 +72,15 @@ export function ProjectCard({ project, variant = "default" }: ProjectCardProps) 
         </div>
 
         <div className="mt-auto pt-6 flex items-center gap-3">
-          <Link href={`/projetos/${project.slug}`}>
-            <Button variant="primary" size="sm">
-              Ver projeto
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </Link>
-          {project.github && (
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-lg border border-zinc-800 px-4 py-2 text-sm text-zinc-400 transition-colors hover:border-cyan-400/30 hover:text-cyan-400 hover:bg-cyan-400/5"
-            >
-              GitHub
-            </a>
-          )}
+          <a
+            href={project.github ?? `/projetos/${project.slug}`}
+            target={project.github ? "_blank" : undefined}
+            rel={project.github ? "noopener noreferrer" : undefined}
+            className="inline-flex h-9 items-center justify-center rounded-lg bg-cyan-400 px-4 text-sm font-medium text-black shadow-lg shadow-cyan-400/10 transition-all duration-200 hover:bg-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+          >
+            Ver projeto
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </a>
         </div>
       </div>
     </div>
