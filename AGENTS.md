@@ -1,9 +1,45 @@
-<!-- BEGIN:nextjs-agent-rules -->
+# Portfolio Project - Agent Rules
 
-# This is NOT the Next.js you know
+## Project Overview
+This is a Next.js 16 portfolio website for Júlio César Santana (Data Engineer | Data Analyst).
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+## Tech Stack
+- Next.js 16.3.5 with App Router
+- React 19.2.8
+- TypeScript
+- Tailwind CSS 4 (@tailwindcss/postcss)
+- lucide-react 1.47.0
+- Geist + Inter fonts
+- ESLint 9
 
-This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+## Architecture
+- Server Components by default (Client Components marked with "use client")
+- Data-driven with TypeScript interfaces
+- All project/experience/skill data in `src/data/`
+- Reusable UI components in `src/components/`
 
-<!-- END:nextjs-agent-rules -->
+## Key Notes
+- lucide-react 1.47.0 does NOT export Github or LinkedIn icons - use text labels instead
+- Icons with `Icon` suffix pattern (e.g., `MenuIcon`, `XIcon`) in this version
+- `Menu` and `X` are the only icon exports available (without suffix)
+- `ChevronRight`, `ArrowLeft`, `ArrowRight` are available as regular exports
+
+## Important Paths
+- `src/app/layout.tsx` - Root layout with Navbar and Footer
+- `src/app/page.tsx` - Home page
+- `src/app/projetos/[slug]/page.tsx` - Project detail page (SSG)
+- `src/app/api/sitemap/route.ts` - Sitemap API route
+- `src/data/projects.ts` - All project data
+- `src/data/experience.ts` - Experience data
+- `src/data/skills.ts` - Skills data
+
+## Build Commands
+- `npm run dev` - Start dev server
+- `npm run build` - Production build
+- `npm run lint` - ESLint check
+- `npm run start` - Start production server
+
+## Notes
+- The sitemap route uses `GET()` handler to return XML
+- All project pages use `generateStaticParams` for SSG
+- The project is fully static with dynamic sitemap

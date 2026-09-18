@@ -1,69 +1,100 @@
-import Image from "next/image";
+import { HeroPipeline } from "@/components/visual/HeroPipeline";
+import { ProjectGrid } from "@/components/projects/ProjectGrid";
+import { TechStack } from "@/components/visual/TechStack";
+import { Container } from "@/components/layout/Section";
+import { SectionHeader } from "@/components/layout/Section";
+import { Button } from "@/components/ui/Button";
+import Link from "next/link";
+import { projects, featuredProjects } from "@/data/projects";
+import { skills } from "@/data/skills";
+
+const allTechNames = Array.from(
+  new Set(skills.flatMap((s) => s.skills))
+);
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="relative">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden bg-[#050505]">
+        <div className="absolute inset-0 bg-grid opacity-50" />
+        <div className="absolute top-1/2 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-400/[0.02] blur-3xl" />
+
+        <div className="relative mx-auto max-w-[1600px] px-4 py-24 md:px-6 md:py-32 lg:px-8 lg:py-40">
+          <div className="mx-auto max-w-4xl text-center">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/5 px-4 py-1.5">
+              <span className="h-2 w-2 animate-pulse rounded-full bg-cyan-400" />
+              <span className="text-xs font-semibold tracking-wide text-cyan-400">
+                Disponível para projetos
+              </span>
+            </div>
+
+            <h1 className="text-5xl font-bold tracking-tight text-zinc-50 sm:text-6xl md:text-7xl lg:text-8xl">
+              Júlio César
+              <br />
+              <span className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-blue-400 bg-clip-text text-transparent">
+                Santana
+              </span>
+            </h1>
+
+            <p className="mt-6 text-lg font-medium text-zinc-400 sm:text-xl md:text-2xl">
+              Data Engineer · Data Analyst
+            </p>
+
+            <p className="mx-auto mt-6 max-w-2xl text-base text-zinc-500 md:text-lg">
+              Transformo dados brutos em pipelines, sistemas e análises confiáveis.
+              Especialista em engenharia de dados, ELT e arquiteturas de dados escaláveis.
+            </p>
+
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+              <Link href="/projetos">
+                <Button variant="primary" size="lg">
+                  Explorar projetos
+                  <svg className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </Button>
+              </Link>
+              <a
+                href="https://github.com/DrkCde15"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-lg border border-zinc-700 px-6 py-3 text-sm font-medium text-zinc-300 transition-all hover:border-cyan-400/30 hover:text-cyan-400 hover:bg-cyan-400/5"
+              >
+                GitHub
+              </a>
+            </div>
+
+            <div className="mt-16">
+              <HeroPipeline />
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </section>
+
+      {/* Tech Stack Section */}
+      <section className="border-t border-white/[0.06] bg-[#070707]">
+        <Container className="py-20 md:py-28">
+          <SectionHeader
+            title="Data Stack"
+            subtitle="Tecnologias que utilizo para construir sistemas de dados confiáveis."
+            tag="TOOLS"
+          />
+          <TechStack title="Tecnologias Principais" items={allTechNames.map((name) => ({ name }))} />
+        </Container>
+      </section>
+
+      {/* Featured + Projects Section */}
+      <section className="border-t border-white/[0.06] bg-[#050505]">
+        <Container className="py-20 md:py-28">
+          <SectionHeader
+            title="Projetos"
+            subtitle="Work selecionado — pipelines, data warehouses e sistemas de dados."
+            tag="WORK"
+          />
+          <ProjectGrid projects={projects} featuredProject={featuredProjects[0]} />
+        </Container>
+      </section>
+    </main>
   );
 }
