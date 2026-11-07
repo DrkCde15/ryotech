@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { companyConfig, footerLinks, socialLinks } from "@/lib/config";
 import { services } from "@/data/services";
@@ -11,12 +12,13 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center gap-2.5" aria-label={`${companyConfig.name} | Home`}>
-              <span
-                aria-hidden="true"
-                className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/15 bg-white/[0.04] text-xs font-bold text-zinc-100"
-              >
-                R
-              </span>
+              <Image
+                src="/ryotech-mark.png"
+                alt=""
+                width={340}
+                height={264}
+                className="h-9 w-auto"
+              />
               <span className="text-xl font-semibold tracking-tight text-zinc-50">
                 {companyConfig.name}
               </span>

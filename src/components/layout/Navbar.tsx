@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
@@ -20,12 +21,14 @@ export function Navbar() {
         aria-label="Navegação principal"
       >
         <Link href="/" className="flex items-center gap-2.5" aria-label={`${companyConfig.name} | Home`}>
-          <span
-            aria-hidden="true"
-            className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/15 bg-white/[0.04] text-xs font-bold tracking-tight text-zinc-100"
-          >
-            R
-          </span>
+          <Image
+            src="/ryotech-mark.png"
+            alt=""
+            width={340}
+            height={264}
+            className="h-9 w-auto"
+            priority
+          />
           <span className="text-xl font-semibold tracking-tight text-zinc-50">
             {companyConfig.name}
           </span>
