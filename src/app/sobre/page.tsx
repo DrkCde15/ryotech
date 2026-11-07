@@ -1,93 +1,151 @@
-import { Container } from "@/components/layout/Section";
-import { Button } from "@/components/ui/Button";
+import type { Metadata } from "next";
 import Link from "next/link";
-import { siteConfig } from "@/lib/config";
+import { Container, SectionHeader } from "@/components/layout/Section";
+import { buttonClasses } from "@/components/ui/Button";
+import { CaseCard } from "@/components/cases/CaseCard";
+import { company, companyValues, differentiators, processSteps } from "@/data/company";
+import { cases } from "@/data/cases";
 
-export const metadata = {
-  title: "Sobre — Júlio César Santana",
-  description: "Conheça Júlio César Santana, Data Engineer e Data Analyst.",
+export const metadata: Metadata = {
+  title: "Sobre",
+  description:
+    "Conheça a RyoTech: uma empresa de tecnologia focada em IA, automação, dados e desenvolvimento de software.",
+  alternates: { canonical: "/sobre" },
 };
 
-const specialties = [
-  {
-    title: "Data Engineering",
-    desc: "Pipelines ETL/ELT, data warehouses, e orquestração de dados.",
-  },
-  {
-    title: "Analytics",
-    desc: "Análise de dados, dashboards e relatórios com ferramentas modernas.",
-  },
-  {
-    title: "Cloud",
-    desc: "Infraestrutura em nuvem, containers e automação escalável.",
-  },
-  {
-    title: "Automation",
-    desc: "Automação de workflows e processos de dados com Airflow e Python.",
-  },
-];
-
 export default function SobrePage() {
+  const featured = cases.filter((item) => item.featured).slice(0, 2);
+
   return (
     <main className="bg-[#050505]">
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(34,211,238,0.03),transparent_60%)]" />
-        <div className="relative mx-auto max-w-[1600px] px-4 py-20 md:px-6 md:py-28 lg:px-8">
-          <Container>
-            <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-              <div>
-                <span className="mb-4 inline-block text-xs font-semibold tracking-widest uppercase text-cyan-400">
-                  ABOUT
-                </span>
-                <h1 className="text-4xl font-bold tracking-tight text-zinc-50 sm:text-5xl md:text-6xl">
-                  Olá, sou Júlio César
-                </h1>
-                <p className="mt-6 text-lg text-zinc-400">
-                  Data Engineer e Data Analyst com foco em construir sistemas de dados robustos e escaláveis.
+      <section className="relative overflow-hidden border-b border-white/[0.08]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.05),transparent_60%)]" />
+        <Container className="relative py-20 md:py-28">
+          <div className="max-w-3xl">
+            <div>
+              <SectionHeader
+                as="h1"
+                title="Tecnologia com propósito"
+                subtitle="A RyoTech nasceu para resolver problemas reais com tecnologia bem feita."
+                tag="SOBRE"
+              />
+              <div className="space-y-4 text-sm leading-relaxed text-zinc-400 md:text-base">
+                <p>
+                  Somos uma empresa de tecnologia especializada em inteligência artificial,
+                  automação, análise de dados e desenvolvimento de sites e aplicativos.
+                  Atuamos do diagnóstico à entrega, com um time enxuto e técnico.
                 </p>
-                <p className="mt-4 text-sm leading-relaxed text-zinc-500">
-                  Trabalho com pipelines de dados, data warehouses, orquestração de workflows e análise de dados. Meu objetivo é transformar dados brutos em insights confiáveis que impulsionam decisões.
+                <p>
+                  Fundada em 2026, a RyoTech veio para ajudar a transformar processos manuais em sistemas
+                  confiáveis e mensuráveis.
                 </p>
-                <div className="mt-8 flex flex-wrap gap-3">
-                  <Link href="/contato">
-                    <Button variant="primary">
-                      Falar comigo
-                    </Button>
-                  </Link>
-                  <a
-                    href={siteConfig.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="rounded-lg border border-zinc-700 px-5 py-3 text-sm font-medium text-zinc-300 transition-all hover:border-cyan-400/30 hover:text-cyan-400 hover:bg-cyan-400/5"
-                  >
-                    GitHub
-                  </a>
-                </div>
+                <p>
+                  Acreditamos que tecnologia só faz sentido quando gera resultado. Por isso,
+                  cada projeto começa com uma pergunta simples: qual problema estamos resolvendo?
+                </p>
               </div>
-
-              <div>
-                <h3 className="mb-6 text-sm font-semibold tracking-widest uppercase text-zinc-500">
-                  Especialidades
-                </h3>
-                <div className="grid gap-3">
-                  {specialties.map((spec) => (
-                    <div
-                      key={spec.title}
-                      className="rounded-xl border border-white/[0.06] bg-zinc-900/30 p-5 transition-all hover:border-cyan-400/20"
-                    >
-                      <h4 className="text-sm font-semibold text-zinc-200">
-                        {spec.title}
-                      </h4>
-                      <p className="mt-1 text-sm text-zinc-500">
-                        {spec.desc}
-                      </p>
-                    </div>
-                  ))}
-                </div>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a href={`mailto:${company.email}`} className={buttonClasses("primary", "lg")}>
+                  Falar com a RyoTech
+                </a>
+                <Link href="/cases" className={buttonClasses("accent", "lg")}>
+                  Ver cases
+                </Link>
               </div>
             </div>
-          </Container>
-        </div>
+          </div>
+        </Container>
+      </section>
+
+      <section className="border-b border-white/[0.08] bg-[#070707]">
+        <Container className="py-20 md:py-28">
+          <SectionHeader
+            title="Nossos valores"
+            subtitle="O que guia cada decisão e cada linha de código."
+            tag="PRINCÍPIOS"
+          />
+          <div className="grid gap-6 md:grid-cols-2">
+            {companyValues.map((value, index) => (
+              <div
+                key={value.title}
+                className={`rounded-xl border border-white/[0.08] bg-zinc-900/30 p-6 ${
+                  index === companyValues.length - 1 && companyValues.length % 2 === 1
+                    ? "md:col-span-2"
+                    : ""
+                }`}
+              >
+                <h3 className="text-sm font-semibold text-zinc-100">
+                  {value.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-zinc-400">
+                  {value.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section className="border-b border-white/[0.08]">
+        <Container className="py-20 md:py-28">
+          <div className="grid gap-12 lg:grid-cols-2">
+            <div>
+              <SectionHeader title="Por que escolher a RyoTech" tag="DIFERENCIAIS" />
+              <div className="space-y-4">
+                {differentiators.map((item) => (
+                  <div
+                    key={item.title}
+                    className="rounded-xl border border-white/[0.08] bg-zinc-900/30 p-5"
+                  >
+                    <h3 className="text-sm font-semibold text-zinc-100">
+                      {item.title}
+                    </h3>
+                    <p className="mt-1.5 text-sm text-zinc-400">
+                      {item.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <SectionHeader title="Como trabalhamos" tag="PROCESSO" />
+              <ol className="space-y-4">
+                {processSteps.map((step, index) => (
+                  <li
+                    key={step.title}
+                    className="rounded-xl border border-white/[0.08] bg-zinc-900/30 p-5"
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="flex h-7 w-7 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] text-xs font-bold text-zinc-300">
+                        {index + 1}
+                      </span>
+                      <h3 className="text-sm font-semibold text-zinc-100">
+                        {step.title}
+                      </h3>
+                    </div>
+                    <p className="mt-2 text-sm text-zinc-400">{step.description}</p>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <section className="bg-[#070707]">
+        <Container className="py-20 md:py-28">
+          <SectionHeader
+            title="Cases em destaque"
+            subtitle="Alguns dos problemas que já resolvemos."
+            tag="RESULTADOS"
+          />
+          <div className="grid gap-6 md:grid-cols-2">
+            {featured.map((item) => (
+              <CaseCard key={item.slug} item={item} />
+            ))}
+          </div>
+        </Container>
       </section>
     </main>
   );

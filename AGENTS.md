@@ -1,45 +1,59 @@
-# Portfolio Project - Agent Rules
+# RyoTech: Site Institucional
 
-## Project Overview
-This is a Next.js 16 portfolio website for Júlio César Santana (Data Engineer | Data Analyst).
+Site institucional da RyoTech, empresa de tecnologia especializada em inteligência artificial, automação, análise de dados e desenvolvimento de sites e aplicativos.
 
-## Tech Stack
-- Next.js 16.3.5 with App Router
-- React 19.2.8
-- TypeScript
-- Tailwind CSS 4 (@tailwindcss/postcss)
-- lucide-react 1.47.0
-- Geist + Inter fonts
+## Stack
+
+- Next.js 16 (App Router, Turbopack, React Compiler)
+- React 19 + TypeScript (strict)
+- Tailwind CSS 4 (`@tailwindcss/postcss`)
+- lucide-react 1.47.0 (apenas `Menu`/`X` sem sufixo; usar SVGs inline para novos ícones)
+- Fontes Inter + Geist Mono
 - ESLint 9
 
-## Architecture
-- Server Components by default (Client Components marked with "use client")
-- Data-driven with TypeScript interfaces
-- All project/experience/skill data in `src/data/`
-- Reusable UI components in `src/components/`
+## Arquitetura
 
-## Key Notes
-- lucide-react 1.47.0 does NOT export Github or LinkedIn icons - use text labels instead
-- Icons with `Icon` suffix pattern (e.g., `MenuIcon`, `XIcon`) in this version
-- `Menu` and `X` are the only icon exports available (without suffix)
-- `ChevronRight`, `ArrowLeft`, `ArrowRight` are available as regular exports
+- Server Components por padrão; Client Components marcados com `"use client"`.
+- Conteúdo data-driven em `src/data/` e tipos em `src/types/`.
+- Componentes reutilizáveis em `src/components/`.
+- Paleta institucional: preto (`#050505`), prata (`zinc`) e branco.
 
-## Important Paths
-- `src/app/layout.tsx` - Root layout with Navbar and Footer
-- `src/app/page.tsx` - Home page
-- `src/app/projetos/[slug]/page.tsx` - Project detail page (SSG)
-- `src/app/api/sitemap/route.ts` - Sitemap API route
-- `src/data/projects.ts` - All project data
-- `src/data/experience.ts` - Experience data
-- `src/data/skills.ts` - Skills data
+## Rotas
 
-## Build Commands
-- `npm run dev` - Start dev server
-- `npm run build` - Production build
-- `npm run lint` - ESLint check
-- `npm run start` - Start production server
+| Rota | Descrição |
+| --- | --- |
+| `/` | Home institucional |
+| `/servicos` | Lista de serviços |
+| `/servicos/[slug]` | Detalhe do serviço (SSG) |
+| `/cases` | Lista de cases |
+| `/cases/[slug]` | Detalhe do case (SSG) |
+| `/tecnologias` | Stack de tecnologia |
+| `/processo` | Processo de trabalho |
+| `/sobre` | Sobre a empresa |
+| `/contato` | Contato + formulário |
+| `/privacidade` | Política de privacidade |
+| `/termos` | Termos de uso |
+| `/sitemap.xml` | Sitemap gerado por `src/app/sitemap.ts` |
+| `/robots.txt` | Robots gerado por `src/app/robots.ts` |
+| `/opengraph-image` | Imagem OpenGraph gerada dinamicamente |
 
-## Notes
-- The sitemap route uses `GET()` handler to return XML
-- All project pages use `generateStaticParams` for SSG
-- The project is fully static with dynamic sitemap
+## Dados
+
+- `src/data/company.ts`: valores, processo, diferenciais
+- `src/data/services.ts`: serviços (fonte das páginas `/servicos`)
+- `src/data/cases.ts`: cases (fonte das páginas `/cases`)
+- `src/data/technologies.ts`: categorias de tecnologia
+
+## Configuração
+
+- `src/lib/config.ts`: nome, e-mail, Instagram, URL e links de navegação.
+- Placeholders a substituir antes do deploy: `url` e `location`.
+
+## Comandos
+
+```bash
+npm run dev    # servidor de desenvolvimento
+npm run build  # build de produção
+npm run lint   # ESLint
+npm run start  # servidor de produção
+```

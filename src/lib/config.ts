@@ -1,60 +1,59 @@
+export const companyConfig = {
+  name: "RyoTech",
+  legalName: "RyoTech Tecnologia LTDA",
+  tagline: "Tecnologia que resolve problemas reais.",
+  description:
+    "A RyoTech é uma empresa de tecnologia especializada em inteligência artificial, automação, análise de dados e desenvolvimento de sites e aplicativos.",
+  shortDescription:
+    "Inteligência artificial, automação, dados e software sob medida para empresas que querem crescer com eficiência.",
+  email: "ryotech08@gmail.com",
+  instagram: "https://www.instagram.com/ryote.ch/",
+  url: "https://ryotech.com.br",
+  location: "Brasil · Atendimento remoto",
+  founded: "2024",
+};
+
 export const metadataConfig = {
   title: {
-    default: "Júlio César Santana | Data Engineer | Data Analyst",
-    template: "%s | Júlio César Santana",
+    default: "RyoTech | IA, Automação, Dados e Desenvolvimento",
+    template: "%s | RyoTech",
   },
-  description:
-    "Portfólio profissional de Júlio César Santana - Data Engineer e Data Analyst. Especialista em pipelines de dados, engenharia de dados e análise de dados.",
-  authors: [{ name: "Júlio César Santana" }],
+  description: companyConfig.description,
   keywords: [
-    "Data Engineer",
-    "Data Analyst",
-    "Python",
-    "SQL",
-    "Apache Airflow",
-    "PySpark",
-    "PostgreSQL",
-    "Databricks",
-    "ETL",
-    "Data Warehouse",
-    "Scrapy",
-    "FastAPI",
-    "Streamlit",
+    "RyoTech",
+    "inteligência artificial",
+    "automação de processos",
+    "análise de dados",
+    "desenvolvimento de sites",
+    "desenvolvimento de aplicativos",
+    "consultoria de tecnologia",
+    "transformação digital",
   ],
-  url: "https://juliocsaressantana.vercel.app",
+  url: companyConfig.url,
 };
 
-export const siteConfig = {
-  name: "Júlio César Santana",
-  url: "https://juliocsaressantana.vercel.app",
-  github: "https://github.com/DrkCde15",
-  linkedin: "https://www.linkedin.com/in/julio-santana-ads/",
-  email: "jcesarsantana215@gmail.com",
-};
-
-export const navLinks = [
+export const navLinks: { label: string; href: string }[] = [
   { label: "Home", href: "/" },
+  { label: "Serviços", href: "/servicos" },
+  { label: "Cases", href: "/cases" },
+  { label: "Tecnologias", href: "/tecnologias" },
   { label: "Sobre", href: "/sobre" },
-  { label: "Projetos", href: "/projetos" },
-  { label: "Stack", href: "/stack" },
-  { label: "Experiência", href: "/experiencia" },
   { label: "Contato", href: "/contato" },
 ];
 
 export const socialLinks = [
   {
-    label: "GitHub",
-    href: "https://github.com/DrkCde15",
-    icon: "github",
-  },
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/julio-santana-ads/",
-    icon: "linkedin",
+    label: "Instagram",
+    href: companyConfig.instagram,
   },
 ];
 
 export const footerLinks = [
-  { label: "GitHub", href: "https://github.com/DrkCde15" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/julio-santana-ads/" },
+  { label: "Serviços", href: "/servicos" },
+  { label: "Cases", href: "/cases" },
+  { label: "Sobre", href: "/sobre" },
+  { label: "Processo", href: "/processo" },
+  { label: "Contato", href: "/contato" },
+  { label: "Política de Privacidade", href: "/privacidade" },
+  { label: "Termos de Uso", href: "/termos" },
 ];

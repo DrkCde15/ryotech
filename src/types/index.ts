@@ -1,24 +1,53 @@
-export interface ProjectTechnology {
-  name: string;
-}
-
-export interface ProjectResult {
+export interface NavLink {
   label: string;
-  value: string;
+  href: string;
 }
 
-export interface ProjectChallenge {
+export interface SocialLink {
+  label: string;
+  href: string;
+}
+
+export interface CompanyValue {
   title: string;
   description: string;
 }
 
-export interface ProjectArchitecture {
+export interface ProcessStep {
+  title: string;
+  description: string;
+  deliverables: string[];
+}
+
+export interface ServiceFeature {
+  title: string;
+  description: string;
+}
+
+export interface Service {
+  slug: string;
+  name: string;
+  tagline: string;
+  description: string;
+  icon: "ai" | "automation" | "data" | "web" | "mobile";
+  features: ServiceFeature[];
+  deliverables: string[];
+  technologies: string[];
+  highlighted?: boolean;
+}
+
+export interface CaseResult {
+  label: string;
+  value: string;
+}
+
+export interface CaseArchitecture {
   title: string;
   description: string;
   steps: string[];
 }
 
-export interface ProjectPipeline {
+export interface CasePipeline {
   title: string;
   steps: PipelineStep[];
 }
@@ -28,55 +57,34 @@ export interface PipelineStep {
   description: string;
 }
 
-export interface Project {
+export interface CaseQuote {
+  text: string;
+  author: string;
+  role: string;
+}
+
+export interface CaseStudy {
   slug: string;
+  client: string;
+  segment: string;
   title: string;
   shortDescription: string;
   description: string;
-  problem: string;
+  challenge: string;
   solution: string;
   technologies: string[];
-  category: string[];
+  categories: string[];
   featured: boolean;
-  github?: string;
   demo?: string;
-  image?: string;
-  architecture?: ProjectArchitecture;
-  challenges?: ProjectChallenge[];
-  results?: ProjectResult[];
-  pipeline?: ProjectPipeline;
-  implementation?: string;
+  github?: string;
+  results: CaseResult[];
+  architecture?: CaseArchitecture;
+  pipeline?: CasePipeline;
+  quote?: CaseQuote;
 }
 
-export interface ExperienceRole {
-  company: string;
-  role: string;
-  period: string;
-  description: string;
-  technologies: string[];
-  responsibilities: string[];
-}
-
-export interface Experience {
-  id: string;
-  role: ExperienceRole;
-}
-
-export interface SkillCategory {
+export interface TechnologyCategory {
   name: string;
-  icon?: string;
-  skills: string[];
+  description: string;
+  items: string[];
 }
-
-export interface NavLink {
-  label: string;
-  href: string;
-}
-
-export interface SocialLink {
-  label: string;
-  href: string;
-  icon: string;
-}
-
-export type ProjectCategory = "All" | "Data Engineering" | "Data Warehouse" | "ETL" | "Data Analysis" | "Big Data" | "Cloud" | "Scraping" | "API" | "Dashboard" | "Financial Data";
